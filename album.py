@@ -33,7 +33,9 @@ def format_album_post(data):
     artist = current_album.get("artist")
     year = current_album.get("year")
     url = current_album.get("url") or "https://1001albumsgenerator.com"
-    return f"{date_str} - {title} by {artist} ({year})\n{url}"
+    spotify_id = current_album.get("spotifyId")
+    spotify_url = f"https://open.spotify.com/album/{spotify_id}" if spotify_id else "No Spotify link available"
+    return f"{date_str} - **{title}** by **{artist} ({year})**\n {spotify_url}"
 
 def run():
     while True:
